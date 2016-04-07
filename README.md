@@ -40,6 +40,7 @@ all 7 files
 ## Related
 
 - [fontmin](https://github.com/ecomfe/fontmin)
+- [fontmin-dump](https://github.com/junmer/fontmin-dump)
 
 
 [travis-url]: https://travis-ci.org/junmer/icon-font
