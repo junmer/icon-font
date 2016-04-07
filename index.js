@@ -18,6 +18,10 @@ var _fontmin = require('fontmin');
 
 var _fontmin2 = _interopRequireDefault(_fontmin);
 
+var _fontminDump = require('fontmin-dump');
+
+var _fontminDump2 = _interopRequireDefault(_fontminDump);
+
 var _meow = require('meow');
 
 var _meow2 = _interopRequireDefault(_meow);
@@ -79,7 +83,7 @@ if (src.length > 1 && !isFile(src[src.length - 1])) {
 }
 
 // start fontmin
-new _fontmin2['default']().src(src).use(_fontmin2['default'].svgs2ttf(fmOpts.fontFamily, fmOpts)).use(_fontmin2['default'].ttf2eot(fmOpts)).use(_fontmin2['default'].ttf2woff(fmOpts)).use(_fontmin2['default'].ttf2svg(fmOpts)).use(_fontmin2['default'].css(fmOpts)).dest(dest || 'output').run(function (err, files, stream) {
+new _fontmin2['default']().src(src).use(_fontmin2['default'].svgs2ttf(fmOpts.fontFamily, fmOpts)).use(_fontmin2['default'].ttf2eot(fmOpts)).use(_fontmin2['default'].ttf2woff(fmOpts)).use(_fontmin2['default'].ttf2svg(fmOpts)).use(_fontmin2['default'].css(fmOpts)).use((0, _fontminDump2['default'])(fmOpts)).dest(dest || 'output').run(function (err, files, stream) {
 
     if (err) {
         log(err);

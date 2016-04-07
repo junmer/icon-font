@@ -24,8 +24,23 @@ icon-font
 ## Examples
 
 ```sh
-$ icon-font ./src/svg/\*.svg ./dest/iconfont --font-family=fontname
+$ icon-font ./src/svg/*.svg ./output --font-family=fontname
+
+created: /Users/baidu/icon-font/output/fontname.ttf
+created: /Users/baidu/icon-font/output/fontname.json
+created: /Users/baidu/icon-font/output/fontname.html
+created: /Users/baidu/icon-font/output/fontname.css
+created: /Users/baidu/icon-font/output/fontname.svg
+created: /Users/baidu/icon-font/output/fontname.woff
+created: /Users/baidu/icon-font/output/fontname.eot
+
+all 7 files
 ```
+
+## Related
+
+- [fontmin](https://github.com/ecomfe/fontmin)
+
 
 [travis-url]: https://travis-ci.org/junmer/icon-font
 [travis-image]: http://img.shields.io/travis/junmer/icon-font.svg

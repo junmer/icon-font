@@ -7,6 +7,7 @@
 
 import fs from 'fs';
 import Fontmin from 'fontmin';
+import dump from 'fontmin-dump';
 import meow from 'meow';
 import extend from 'xtend';
 
@@ -84,6 +85,7 @@ new Fontmin()
     .use(Fontmin.ttf2woff(fmOpts))
     .use(Fontmin.ttf2svg(fmOpts))
     .use(Fontmin.css(fmOpts))
+    .use(dump(fmOpts))
     .dest(dest || 'output')
     .run((err, files, stream) => {
 
