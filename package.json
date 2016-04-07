@@ -1,0 +1,27 @@
+{
+  "name": "icon-font",
+  "version": "0.0.3",
+  "description": "make icon-font from svgs",
+  "keywords": [
+    "font",
+    "icon",
+    "iconfont"
+  ],
+  "repository": "junmer/icon-font",
+  "bin": {
+    "icon-font": "./index.js"
+  },
+  "scripts": {
+    "test": "icon-font fixtures/svg/*.svg"
+  },
+  "files": [
+    "index.js"
+  ],
+  "author": "junmer",
+  "license": "MIT",
+  "dependencies": {
+    "fontmin": "^0.9.3",
+    "meow": "^3.7.0",
+    "xtend": "^4.0.1"
+  }
+}
