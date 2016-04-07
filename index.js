@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+
 /**
  * @file make iconfont from svgs
  * @author junmer
@@ -7,42 +8,42 @@
 
 'use strict';
 
-const fs = require('fs');
-const meow = require('meow');
-const Fontmin = require('fontmin');
-const extend = require('xtend');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-function log(msg) {
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _fontmin = require('fontmin');
+
+var _fontmin2 = _interopRequireDefault(_fontmin);
+
+var _meow = require('meow');
+
+var _meow2 = _interopRequireDefault(_meow);
+
+var _xtend = require('xtend');
+
+var _xtend2 = _interopRequireDefault(_xtend);
+
+var log = function log(msg) {
     process.stdout.write(msg + '\n');
-}
+};
 
 /**
  * help
  *
  * @type {string}
  */
-const help = `
-    Usage
-      $ icon-font <input> [<output>]
-
-    Options
-      -f, --font-family  font name
-
-    Examples
-      $ icon-font ./src/svg/\*.svg ./dest/iconfont --font-family=fontname
-
-`;
+var help = '\n    Usage\n      $ icon-font <input> [<output>]\n\n    Options\n      -f, --font-family  font name\n\n    Examples\n      $ icon-font ./src/svg/*.svg ./dest/iconfont --font-family=fontname\n\n';
 
 // parse argv
-const cli = meow(help, {
-    string: [
-        'font-family'
-    ],
+var cli = (0, _meow2['default'])(help, {
+    string: ['font-family'],
     alias: {
         f: 'font-family'
     }
 });
-
 
 // input empty
 if (!cli.input.length) {
@@ -51,26 +52,26 @@ if (!cli.input.length) {
 }
 
 // fontmin options
-var fmOpts = extend({fontFamily: 'iconfont'}, cli.flags);
+var fmOpts = (0, _xtend2['default'])({ fontFamily: 'iconfont' }, cli.flags);
 
 // src
 var src = cli.input;
 
 // dest
-var dest;
+var dest = undefined;
 
-function isFile(path) {
+var isFile = function isFile(path) {
+
     if (/^[^\s]+\.\w*$/.test(path)) {
         return true;
     }
 
     try {
-        return fs.statSync(path).isFile();
-    }
-    catch (err) {
+        return _fs2['default'].statSync(path).isFile();
+    } catch (err) {
         return false;
     }
-}
+};
 
 if (src.length > 1 && !isFile(src[src.length - 1])) {
     dest = src[src.length - 1];
@@ -78,26 +79,17 @@ if (src.length > 1 && !isFile(src[src.length - 1])) {
 }
 
 // start fontmin
-new Fontmin()
-    .src(src)
-    .use(Fontmin.svgs2ttf(fmOpts.fontFamily, fmOpts))
-    .use(Fontmin.ttf2eot(fmOpts))
-    .use(Fontmin.ttf2woff(fmOpts))
-    .use(Fontmin.ttf2svg(fmOpts))
-    .use(Fontmin.css(fmOpts))
-    // .use(Fontmin.iconfont(fmOpts))
-    .dest(dest || 'output')
-    .run(function (err, files, stream) {
+new _fontmin2['default']().src(src).use(_fontmin2['default'].svgs2ttf(fmOpts.fontFamily, fmOpts)).use(_fontmin2['default'].ttf2eot(fmOpts)).use(_fontmin2['default'].ttf2woff(fmOpts)).use(_fontmin2['default'].ttf2svg(fmOpts)).use(_fontmin2['default'].css(fmOpts)).dest(dest || 'output').run(function (err, files, stream) {
 
-        if (err) {
-            log(err);
-            process.exit(1);
-        }
+    if (err) {
+        log(err);
+        process.exit(1);
+    }
 
-        files.forEach(function (file) {
-            log(`created: ${file.path}`);
-        });
-
-        log(`\nall ${files.length} files`);
-
+    files.forEach(function (file) {
+        log('created: ' + file.path);
     });
+
+    log('\nall ' + files.length + ' files');
+});
+

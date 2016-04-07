@@ -16,7 +16,10 @@ icon-font
 ```
 
 ## Options
+
+```
   -f, --font-family  font name
+```
 
 ## Examples
 

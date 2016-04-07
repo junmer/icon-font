@@ -12,7 +12,8 @@
     "icon-font": "./index.js"
   },
   "scripts": {
-    "test": "./index.js fixtures/svg/*.svg"
+    "test": "./index.js fixtures/svg/*.svg",
+    "build": "make build"
   },
   "files": [
     "index.js"
