@@ -2,13 +2,19 @@
 
 /**
  * @file make iconfont from svgs
+ * @author junmer
  */
 
 'use strict';
 
+const fs = require('fs');
 const meow = require('meow');
 const Fontmin = require('fontmin');
 const extend = require('xtend');
+
+function log(msg) {
+    process.stdout.write(msg + '\n');
+}
 
 /**
  * help
@@ -40,7 +46,7 @@ const cli = meow(help, {
 
 // input empty
 if (!cli.input.length) {
-    console.error(help);
+    log(help);
     process.exit(1);
 }
 
@@ -84,14 +90,14 @@ new Fontmin()
     .run(function (err, files, stream) {
 
         if (err) {
-            console.error(err);
+            log(err);
             process.exit(1);
         }
 
         files.forEach(function (file) {
-            console.log(`created: ${file.path}`);
+            log(`created: ${file.path}`);
         });
 
-        console.log(`\nall ${files.length} files`);
+        log(`\nall ${files.length} files`);
 
     });
